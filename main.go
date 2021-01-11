@@ -32,8 +32,6 @@ func main() {
 			},
 		},
 		Action: func(c *cli.Context) error {
-			// fmt.Printf("execute: %q\n", c.Args().Get(0))
-			fmt.Printf("execute\n")
 			if inputFormat != "" {
 				fmt.Printf("input: %s\n", inputFormat)
 			}

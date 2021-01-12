@@ -6,7 +6,7 @@ import (
 	"github.com/gucchisk/bytestring"
 )
 
-func NewFormat(str string) (bytestring.Strings, error) {
+func NewEncoding(str string) (bytestring.Encoding, error) {
 	switch strings.ToLower(str) {
 	case "ascii", "":
 		return bytestring.Ascii, nil
@@ -15,5 +15,5 @@ func NewFormat(str string) (bytestring.Strings, error) {
 	case "base64":
 		return bytestring.Base64, nil
 	}
-	return nil, fmt.Errorf("unkown format: %s", str)
+	return nil, fmt.Errorf("unkown encoding: %s", str)
 }

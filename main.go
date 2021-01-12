@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	var inputFormat, outputFormat string
+	var inEnc, outEnc string
 	app := &cli.App{
 		Name: "byconv",
 		UsageText: "byconv [options]",
@@ -22,18 +22,22 @@ func main() {
 				Name: "input",
 				Usage: "input",
 				Aliases: []string{"i"},
-				Destination: &inputFormat,
+				Destination: &inEnc,
 			},
 			&cli.StringFlag{
 				Name: "output",
 				Usage: "output",
 				Aliases: []string{"o"},
-				Destination: &outputFormat,
+				Destination: &outEnc,
 			},
 		},
 		Action: func(c *cli.Context) error {
-			if inputFormat != "" {
-				fmt.Printf("input: %s\n", inputFormat)
+			if inEnc != "" {
+				fmt.Printf("input: %s\n", inEnc)
+			}
+
+			if c.Args().Len() != 1 {
+				return fmt.Errorf("invalid arguments")
 			}
 
 			filename := c.Args().Get(0)
@@ -58,21 +62,21 @@ func main() {
 				return err
 			}
 
-			input, err := flags.NewFormat(inputFormat)
+			in, err := flags.NewEncoding(inEnc)
 			if err != nil {
 				return err
 			}
-			bytes, err := bytestring.NewBytes(byteArray, bytestring.Type(input))
+			bytes, err := bytestring.NewBytes(byteArray, bytestring.SetEncoding(bytestring.Encoding(in)))
 			if err != nil {
 				return err
 			}
-			output, err := flags.NewFormat(outputFormat)
+			out, err := flags.NewEncoding(outEnc)
 			if err != nil {
 				return err
 			}
 
 			var result string
-			switch output {
+			switch out {
 			case bytestring.Ascii:
 				result = bytes.String()
 			case bytestring.Hex:

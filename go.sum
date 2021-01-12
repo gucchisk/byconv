@@ -3,6 +3,8 @@ github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d h1:U+s90UTSY
 github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
 github.com/gucchisk/bytestring v0.0.0-20210111133226-ebdd305cb62e h1:y3i+LRYn9ANQONx9ZncaaG1D9XHRPsxKETHyOa61Rec=
 github.com/gucchisk/bytestring v0.0.0-20210111133226-ebdd305cb62e/go.mod h1:11+A2JY5LOtqXnAw6ULbN8YeryJL4XSVPP9V/zIQ7ko=
+github.com/gucchisk/bytestring v0.0.0-20210112153320-fd9f97f8b5ae h1:rmSjVYv+2fSxhF3ru25ikolNoiwQ/51N2fkmWBmNJ0o=
+github.com/gucchisk/bytestring v0.0.0-20210112153320-fd9f97f8b5ae/go.mod h1:11+A2JY5LOtqXnAw6ULbN8YeryJL4XSVPP9V/zIQ7ko=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/russross/blackfriday/v2 v2.0.1 h1:lPqVAte+HuHNfhJ/0LC98ESWRz8afy9tM/0RK8m9o+Q=
 github.com/russross/blackfriday/v2 v2.0.1/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=

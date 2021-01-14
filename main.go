@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"os"
 
 	"github.com/urfave/cli/v2"
@@ -16,27 +15,29 @@ func main() {
 	var inEnc, outEnc string
 	app := &cli.App{
 		Name: "byconv",
+		Usage: "byte converter (ascii, hex, base64)",
 		UsageText: "byconv [options]",
 		Flags: []cli.Flag {
 			&cli.StringFlag{
 				Name: "input",
-				Usage: "input",
+				Usage: "input encoding",
 				Aliases: []string{"i"},
 				Destination: &inEnc,
 			},
 			&cli.StringFlag{
 				Name: "output",
-				Usage: "output",
+				Usage: "output encoding",
 				Aliases: []string{"o"},
 				Destination: &outEnc,
 			},
 		},
 		Action: func(c *cli.Context) error {
-			if inEnc != "" {
+			if inEnc != "" {				
 				fmt.Printf("input: %s\n", inEnc)
 			}
 
 			if c.Args().Len() != 1 {
+				cli.ShowAppHelp(c)
 				return fmt.Errorf("invalid arguments")
 			}
 
@@ -83,8 +84,6 @@ func main() {
 				result = bytes.HexString()
 			case bytestring.Base64:
 				result = bytes.Base64()
-			default:
-				return fmt.Errorf("error")
 			}
 			fmt.Printf("%s", result)
 			return nil
@@ -92,6 +91,7 @@ func main() {
 	}
 	err := app.Run(os.Args)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Printf("\n%v\n", err)
+		os.Exit(1)
 	}
 }

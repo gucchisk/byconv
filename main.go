@@ -16,7 +16,8 @@ func main() {
 	app := &cli.App{
 		Name: "byconv",
 		Usage: "byte converter (ascii, hex, base64)",
-		UsageText: "byconv [options]",
+		Description: "convert byte string of file or stdin",
+		UsageText: "byconv [options] [file]",
 		Flags: []cli.Flag {
 			&cli.StringFlag{
 				Name: "input",

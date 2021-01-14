@@ -13,7 +13,10 @@ NAME:
    byconv - byte converter (ascii, hex, base64)
 
 USAGE:
-   byconv [options]
+   byconv [options] [file]
+
+DESCRIPTION:
+   convert byte string of file or stdin
 
 COMMANDS:
    help, h  Shows a list of commands or help for one command

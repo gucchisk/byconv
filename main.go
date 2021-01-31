@@ -12,12 +12,12 @@ import (
 )
 
 func main() {
-	var inEnc, outEnc string
+	var inEnc, outEnc, filename string
 	app := &cli.App{
 		Name: "byconv",
 		Usage: "byte converter (ascii, hex, base64)",
 		Description: "convert byte string of file or stdin",
-		UsageText: "byconv [options] [file]",
+		UsageText: "byconv [options]",
 		Flags: []cli.Flag {
 			&cli.StringFlag{
 				Name: "input",
@@ -31,22 +31,23 @@ func main() {
 				Aliases: []string{"o"},
 				Destination: &outEnc,
 			},
+			&cli.StringFlag{
+				Name: "file",
+				Usage: "input file",
+				Aliases: []string{"f"},
+				Destination: &filename,
+			},
 		},
 		Action: func(c *cli.Context) error {
 			if inEnc != "" {				
 				fmt.Printf("input: %s\n", inEnc)
 			}
 
-			if c.Args().Len() != 1 {
-				cli.ShowAppHelp(c)
-				return fmt.Errorf("invalid arguments")
-			}
-
-			filename := c.Args().Get(0)
 			var reader io.Reader
 			deferFunc := func() error {
 				return nil
 			}
+
 			if filename == "" {
 				reader = os.Stdin
 			} else {
@@ -85,6 +86,8 @@ func main() {
 				result = bytes.HexString()
 			case bytestring.Base64:
 				result = bytes.Base64()
+			case bytestring.Base64URL:
+				result = bytes.Base64URL()
 			}
 			fmt.Printf("%s", result)
 			return nil

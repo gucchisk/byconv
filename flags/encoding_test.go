@@ -35,6 +35,14 @@ func TestNewEncoding(t *testing.T) {
 			str: "Base64",
 			expect: bytestring.Base64,
 		},
+		{
+			str: "base64url",
+			expect: bytestring.Base64URL,
+		},
+		{
+			str: "Base64URL",
+			expect: bytestring.Base64URL,
+		},
 	}
 
 	for _, data := range tests {

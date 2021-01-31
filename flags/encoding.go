@@ -14,6 +14,8 @@ func NewEncoding(str string) (bytestring.Encoding, error) {
 		return bytestring.Hex, nil
 	case "base64":
 		return bytestring.Base64, nil
+	case "base64url":
+		return bytestring.Base64URL, nil
 	}
 	return nil, fmt.Errorf("unkown encoding: %s", str)
 }
